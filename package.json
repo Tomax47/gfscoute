@@ -1,8 +1,9 @@
 {
   "name": "gfscoute",
   "version": "1.0.0",
+  "type": "module",
   "description": "Tool for fetching & downloading fonts from Google Fonts",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
