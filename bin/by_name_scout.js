@@ -1,3 +1,11 @@
+import FileSaver from "file-saver";
+
+const getFileExtension = (url) => {
+  const parts = url.split("/");
+
+  return parts[parts.length -1].split(".")[1];
+};
+
 const fineTuneFontName = (rawFontName) => {
     return rawFontName
       .split(' ')
@@ -14,37 +22,40 @@ const makeGFontsRequest = async (fontName) => {
         return data;
       }
       return null;
-    } catch {
-      return null;
+    } catch(error) {
+      throw error;
     }
 };
 
 const getFontDownloadURL = async (fontName) => {
-    const data = await makeGFontsRequest(fontName);
+    const data = await makeGFontsRequest(fontName).catch((error) => {
+      if (error instanceof Error) {
+        throw error;
+      } else {
+        throw new Error("An unknown error has occurred while scouting the font")
+      };
+    });
 
-    if (data !== null) {
+    if (data) {
       const match = data.match(/src:\s*url\((.*?)\)/);
       return match && match[1] ? match[1].replace(/['"]/g, '') : null;
     }
-
-    return null;
 };
 
 const handleFontDownload = async (fontName) => {
     try {
-    //   const link = document.createElement('a');
-    //   link.href = url;
-    //   link.download = '';
+      const url = await getFontDownloadURL(fontName);
 
-    //   document.body.appendChild(link);
-    //   link.click();
-    //   document.body.removeChild(link);
+      if (!url) {
+        throw new Error("Underfined download URL!");
+      }
 
-    const url = await getFontDownloadURL(fontName);
-    console.log(`URL -> ${url}`);
+      const extension = getFileExtension(url);
+
+      FileSaver.saveAs(url, `${fontName}.${extension}`);
     } catch(error) {
       throw error;
     }
-}
+};
 
 export default handleFontDownload;

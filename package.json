@@ -5,11 +5,16 @@
   "description": "Tool for fetching & downloading fonts from Google Fonts",
   "main": "lib/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "bin": "bin"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomax47",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "capture-stack-trace": "^2.1.0",
+    "file-saver": "^2.0.5"
+  }
 }
