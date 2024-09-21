@@ -2,14 +2,11 @@
   "name": "gfscoute",
   "version": "1.0.0",
   "type": "module",
-  "description": "Tool for fetching & downloading fonts from Google Fonts",
+  "description": "A tool for fetching & downloading fonts' files from Google Fonts",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "bin": "bin"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomax47",
   "license": "MIT",
