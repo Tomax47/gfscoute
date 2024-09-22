@@ -8,6 +8,18 @@
     "lib": "lib",
     "bin": "bin"
   },
+  "keywords": [
+    "Google fonts",
+    "Fonts downloading"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Tomax47/gfscoute.git"
+  },
+  "homepage": "git@github.com:Tomax47/gfscoute.git#readme",
+  "bugs": {
+    "url": "git@github.com:Tomax47/gfscoute.git/issues"
+  },
   "author": "Tomax47",
   "license": "MIT",
   "dependencies": {
