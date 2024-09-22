@@ -37,14 +37,29 @@ import DownloadFont from "gfscoute";
 const DownloadFont = require("gfscoute");
 ```
 
-Example of calling the function:
+Example of calling the function /test/:
 
 ```javascript
-DownloadFont("Roboto").then(
-    toast.success("Font downloaded successfully");
-).catch((error)=> {
-    // Handle the error here
-});
+import { DownloadFont, ScouteFont } from "gfscoute";
+
+const fontName = "Roboto";
+
+ScouteFont(fontName)
+  .then((resp) => {
+    if (resp) {
+      DownloadFont(fontName)
+        .then(console.log("Success"))
+        .catch((error) => {
+          // Handle the error as you want here
+          console.log(error);
+        });
+    } else {
+      // Hadnle font not found case
+    }
+  })
+  .catch((error) => {
+    // Handle error
+  });
 ```
 
 Complete example:

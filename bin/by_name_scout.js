@@ -1,56 +1,27 @@
 import FileSaver from "file-saver";
-
-const getFileExtension = (url) => {
-  const parts = url.split("/");
-
-  return parts[parts.length -1].split(".")[1];
-};
-
-const fineTuneFontName = (rawFontName) => {
-  return rawFontName
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("+");
-};
-
-const makeGFontsRequest = async (fontName) => {
-  const fineTunedFontName = fineTuneFontName(fontName);
-  try {
-    const resp = await fetch(`https://fonts.googleapis.com/css2?family=${fineTunedFontName}`);
-    if (resp.ok) {
-      const data = await resp.text();
-      return data;
-    }
-    return null;
-  } catch(error) {
-    throw error;
-  }
-};
-
-const getFontDownloadURL = async (fontName) => {
-  const data = await makeGFontsRequest(fontName).catch((error) => {
-    if (error instanceof Error) {
-      throw error;
-    } else {
-      throw new Error("An unknown error has occurred while scouting the font");
-    };
-  });
-
-  if (data) {
-    const match = data.match(/src:\s*url\((.*?)\)/);
-    return match && match[1] ? match[1].replace(/['"]/g, "") : null;
-  }
-};
+import getFontDownloadURLAndFormat from "./scoute_font.js";
 
 const handleFontDownload = async (fontName) => {
+  const typeMap = {
+    "woff": "woff",
+    "woff2": "woff2",
+    "ttf": "ttf",
+    "otf": "otfs",
+    "truetype": "woff2"
+  };
+
   try {
-    const url = await getFontDownloadURL(fontName);
+    const { url, format } = await getFontDownloadURLAndFormat(fontName);
 
     if (!url) {
       throw new Error("Underfined download URL!");
     }
 
-    const extension = getFileExtension(url);
+    const extension = typeMap[format];
+
+    if (!extension) {
+      throw new Error(`Unsupported file type: ${extension}.`);
+    };
 
     FileSaver.saveAs(url, `${fontName}.${extension}`);
   } catch(error) {
