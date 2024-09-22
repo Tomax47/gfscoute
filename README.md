@@ -40,21 +40,27 @@ const DownloadFont = require("gfscoute");
 Example of calling the function /test/:
 
 ```javascript
-import { DownloadFont, ScouteFont } from "gfscoute";
+DownloadFont("Georgia")
+  .then(console.log("Success"))
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+The **ScoutFont** function can be called to search the font, and return a `Boolean` response:
+
+```javascript
+import { ScouteFont } from "gfscoute";
 
 const fontName = "Roboto";
 
 ScouteFont(fontName)
   .then((resp) => {
     if (resp) {
-      DownloadFont(fontName)
-        .then(console.log("Success"))
-        .catch((error) => {
-          // Handle the error as you want here
-          console.log(error);
-        });
+        // Font found. Perform action...
+    });
     } else {
-      // Hadnle font not found case
+      // Font could not be found.
     }
   })
   .catch((error) => {
