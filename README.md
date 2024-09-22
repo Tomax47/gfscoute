@@ -4,12 +4,12 @@
 
 ## Introduction
 
-**gfscoute** is a npm tool designed for for effortless fonts fetching & downloading from Google Fonts.
+**gfscoute** is a npm tool designed for effortless fonts fetching & downloading from Google Fonts.
 
 ## Features
 
-- **Download By Name**: GFScoute makes it easy to download the font, by simply providing its name.
-- **Multiple Extensions Support**: The tol will download the font file locally in its original type [.tff, .woff2, etc...].
+- **Download By Name**: GFScoute makes it easy to search & download the font by its name.
+- **Multiple Extensions Support**: The tool will download the font file locally in its original type [.tff, .woff2, etc...].
 
 ## Installation
 
