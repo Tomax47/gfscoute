@@ -1,3 +1,4 @@
 declare module 'gfscoute' {
-    export default function DownloadFont(fontName: string): Promise<void>;
-}
+    export function DownloadFont(fontName: string): Promise<void>;
+    export function ScouteFont(fontName: string): Promise<boolean>;
+};
