@@ -7,8 +7,8 @@
         "skipLibCheck": true,
     },
     "include": [
-        "bin/**.ts",
+        "bin/**.js",
         "lib/**.js",
-        "global.d.ts",
+        "lib/**.ts",
     ]
 }
