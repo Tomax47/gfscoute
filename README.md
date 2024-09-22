@@ -46,3 +46,39 @@ DownloadFont("Roboto").then(
     // Handle the error here
 });
 ```
+
+Complete example:
+
+```typescript
+"use client";
+
+import { useState } from "react";
+import DownloadFont from "gfscoute";
+
+export default function Fonts() {
+  const [fontName, setFontName] = useState("");
+
+  const hadnleDownload = (name: string) => {
+    DownloadFont(name)
+      .then(() => console.log("Success"));
+      .catch((error: Error) => {
+        throw error;
+      });
+  };
+
+  return (
+    <>
+      <h1>Type font's name</h1>
+      <input
+        id="fontName"
+        value={fontName}
+        onChange={(e) => setFontName(e.target.value)}
+      />
+      <button onClick={() => hadnleDownload(fontName)}>
+        {" "}
+        Download Font
+      </button>
+    </>
+  );
+}
+```
