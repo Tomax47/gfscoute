@@ -1,6 +1,14 @@
-### GFScoute V1.0.0
+<div align="center">
+  <h1>GFScoute V1.0.0</h1>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/gfscoute.svg)](https://www.npmjs.com/package/gfscoute)
+[![Downloads](https://img.shields.io/npm/dm/gfscoute.svg)](https://www.npmjs.com/package/gfscoute)
+
+  <p align="center">
+    <img src="assets/logo.png" alt="GFScoute Logo" width="300"/>
+  </p>
+</div>
 
 ## Introduction
 
